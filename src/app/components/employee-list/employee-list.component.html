@@ -1,0 +1,27 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <select [(ngModel)]="selectedManager" (change)="onSelected($event)">
+        <option *ngFor="let item of directors" [value]="item.id">{{ item.name }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Employee List</h4>
+    <table>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.id }}</td>
+        <td></td>
+        <td>{{ employee.name }}</td>
+        <td></td>
+        <td>
+          <select>
+            <option *ngFor="let item of employee.roles" [value]="item.id">{{ item.name }}</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-6">
+  </div>
+</div>

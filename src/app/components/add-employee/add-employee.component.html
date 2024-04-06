@@ -1,0 +1,65 @@
+<div>
+  <div class="submit-form">
+    <div>
+      <label>Managers Name :&nbsp;</label>
+      <select [(ngModel)]="selectedManager" (change)="onSelected($event)">
+        <option *ngFor="let item of directors" [value]="item.id">{{ item.name }}</option>
+      </select>
+    </div>
+    <form [formGroup]="submissionForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="firstName">First Name :&nbsp;</label>
+        <input type="text" id="firstName" formControlName="firstName">
+      </div>
+      <div>
+        <label for="lastName">Last Name :&nbsp;</label>
+        <input type="text" id="lastName" formControlName="lastName">
+      </div>
+      <div>
+        <label for="age">Age :&nbsp;</label>
+        <input type="text" id="age" formControlName="age">
+      </div>
+      <button type="submit" [disabled]="!submissionForm.valid">Submit</button>
+    </form>
+    <div>
+      <div>Roles</div>
+      <div>
+        <ng-multiselect-dropdown
+        [placeholder]="'Select items'"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        [(ngModel)]="selectedItems"   
+        (onSelect)="onItemSelect($event)"     
+        ></ng-multiselect-dropdown>
+      </div> 
+      <div>
+        <p *ngIf="!requiredField">
+          You must select a value !!
+        </p>
+      </div>   
+    </div>
+    <div>
+      
+    </div>
+    <!-- 
+    @if (!submitted) {
+    <div class="form-group">
+      <label for="name">name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        [(ngModel)]="employee.name"
+        name="name"
+      />
+    </div>
+
+    <button (click)="save()" class="btn btn-success">Submit</button>
+    } @else {
+    <h4>Save was submitted successfully!</h4>
+    <button class="btn btn-success" (click)="newEmployee()">Add</button>
+    }
+  </div>
+  -->
+</div>
